@@ -100,7 +100,7 @@ int main(int argc, char *argv[]) {
 				parsedLine++;
 			}
 			std::chrono::system_clock::time_point endTime = std::chrono::system_clock::now();
-			std::chrono::duration<int> timeTaken = /*std::chrono::duration_cast<std::chrono::duration<int>>*/(endTime - startingTime);
+			std::chrono::duration<double> timeTaken = std::chrono::duration_cast<std::chrono::duration<double>>(endTime - startingTime);
 			std::cout << "Done parsing " << parsedLine+1 << " lines in " << timeTaken.count() << " seconds." << std::endl << "Found " << subtitles << " subtitles.";
 			std::cout << "Would you like to output all subtitles to the console? (y/n) ";
 			char choice;

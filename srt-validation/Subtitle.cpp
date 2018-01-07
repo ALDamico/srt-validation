@@ -99,7 +99,7 @@ std::ostream & operator<<(std::ostream & os, const Subtitle & sub)
 	os << "ID: " << sub.id << std::endl
 		<< "Start time: " << sub.startTime << std::endl
 		<< "End time: " << sub.endTime;
-	for (int i = 0; i < sub.lines.capacity(); i++) {
+	for (unsigned i = 0; i < sub.lines.capacity(); i++) {
 		os << "Line " << i << ": " << sub.lines[i] << std::endl;
 	}
 	return os;
