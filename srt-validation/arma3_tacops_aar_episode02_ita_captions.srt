@@ -1,0 +1,501 @@
+1
+00:00:09,700 --> 00:00:10,880
+Ciao, il mio nome è Ash.
+
+2
+00:00:10,880 --> 00:00:13,750
+Sono un consulente militare
+per Bohemia Interactive.
+
+3
+00:00:13,750 --> 00:00:16,880
+Sono stato caposquadra
+senior nell'esercito britannico,
+
+4
+00:00:16,880 --> 00:00:19,000
+e ho trascorso 10 anni da soldato 
+in prima linea.
+
+5
+00:00:19,000 --> 00:00:22,000
+In sostanza, il mio compito è
+di aiutarvi nel corso degli AAR,
+
+6
+00:00:22,000 --> 00:00:23,500
+i Rapporti di fine missione.
+
+7
+00:00:33,000 --> 00:00:37,000
+Nessun piano sopravvive al
+primo contatto con il nemico,
+
+8
+00:00:37,000 --> 00:00:38,980
+per cui dovrete adattarvi e prevalere.
+
+9
+00:00:38,980 --> 00:00:39,980
+Nuovamente, non sono
+nessuno di speciale,
+
+10
+00:00:39,980 --> 00:00:44,380
+metto solo a disposizione le mie
+esperienze in modo pertinente ad Arma.
+
+11
+00:00:44,380 --> 00:00:48,500
+E magari dopo tornerete
+nuovamente a giocare alle missioni
+
+12
+00:00:48,500 --> 00:00:52,500
+da una nuova prospettiva e con
+un'esperienza del tutto diversa,
+
+13
+00:00:52,500 --> 00:00:55,900
+con alcuni dei suggerimenti che vi
+ho dato, o consigli, trucchi, eccetera.
+
+14
+00:01:03,300 --> 00:01:07,200
+Ora parleremo della tattica per
+piccole squadre, per piccole unità.
+
+15
+00:01:07,200 --> 00:01:13,020
+Generalmente, è correlata alle FS,
+o Forze Speciali, le Operazioni Speciali.
+
+16
+00:01:13,020 --> 00:01:18,069
+Ci sono tante ottime risorse su
+internet, tanti operatori talentuosi
+
+17
+00:01:18,069 --> 00:01:23,469
+che hanno affrontato molte di queste situazioni,
+e se volete avere un po' di informazioni
+
+18
+00:01:23,469 --> 00:01:27,000
+che vi saranno utili anche in
+futuro, utilizzate queste risorse.
+
+19
+00:01:27,000 --> 00:01:28,700
+Ce ne sono alcune veramente ottime.
+
+20
+00:01:29,439 --> 00:01:33,209
+Per quel che riguarda Arma, oggi
+andremo a vedere come ho impiegato,
+
+21
+00:01:33,209 --> 00:01:36,626
+quel che so delle tattiche per piccole
+squadre all'interno della missione,
+
+22
+00:01:36,626 --> 00:01:41,100
+dove dovevate attaccare i sistemi
+missilistici anticarro o i sistemi d'arma.
+
+23
+00:01:41,109 --> 00:01:43,439
+Ci sono un paio di postazioni.
+
+24
+00:01:43,439 --> 00:01:47,500
+Ad un certo punto è anche comparso
+un carro armato, e si poteva
+
+25
+00:01:47,500 --> 00:01:51,109
+richiedere fuoco di artiglieria, o 
+almeno, io l'ho richiesto lì.
+
+26
+00:01:51,109 --> 00:01:53,500
+Liberarsi di quel carro armato
+era la soluzione migliore.
+
+27
+00:01:55,100 --> 00:02:00,500
+Prima di arrivare lì, passerete settimane,
+mesi, qualsiasi tempo che avete a disposizione
+
+28
+00:02:00,500 --> 00:02:05,039
+per introdurvi in un presidio di
+osservazione e scoprire quanto possibile.
+
+29
+00:02:05,039 --> 00:02:11,000
+Percorsi di pattugliamento,
+abitudini, chi è alleato con chi,
+
+30
+00:02:11,000 --> 00:02:15,540
+ogni singolo dettaglio, ferite,
+chi ha i piedi doloranti o le vesciche.
+
+31
+00:02:15,540 --> 00:02:20,650
+Riuscirete a vedere tutto questo dal 
+momento che utilizzerete
+
+32
+00:02:20,650 --> 00:02:22,290
+ottiche avanzate
+per scoprire quel che succede.
+
+33
+00:02:22,290 --> 00:02:28,080
+Tutto questo vi aiuterà a distruggere
+il nemico quando sarà il momento.
+
+34
+00:02:28,080 --> 00:02:29,610
+Considerate anche che
+siete una piccola unità.
+
+35
+00:02:29,610 --> 00:02:34,280
+Non avete le risorse per un tirarla
+per le lunghe, quindi dovrete colpire,
+
+36
+00:02:34,280 --> 00:02:35,970
+velocemente e con la massima aggressione.
+
+37
+00:02:35,970 --> 00:02:39,000
+Colpiteli così forte da non fargli capire
+più nulla, poi andatevene subito da lì
+
+38
+00:02:39,000 --> 00:02:42,019
+e anche in fretta. Insomma, sparite.
+
+39
+00:02:42,019 --> 00:02:43,100
+Pensate come penserebbe un ninja.
+
+40
+00:02:44,129 --> 00:02:50,459
+Comunque, la mia modalità di attacco in missione.
+Ho osservato quel che dovevo osservare,
+
+41
+00:02:50,459 --> 00:02:55,500
+ho attaccato tutte le postazioni anticarro,
+ho colpito il carro e poi ho spinto verso Houdan.
+
+42
+00:02:56,230 --> 00:03:02,560
+Sapevamo che c'era una FRR nella fattoria
+perché ci stavamo muovendo in fretta,
+
+43
+00:03:02,560 --> 00:03:05,409
+verso questo punto, perché
+avevamo già fatto molto rumore.
+
+44
+00:03:05,409 --> 00:03:10,150
+Naturalmente, prima di quel momento,
+dovrete usare tutti i vostri sensi.
+
+45
+00:03:10,150 --> 00:03:11,150
+L'udito è importante.
+
+46
+00:03:11,150 --> 00:03:14,030
+Dovrete fare in modo di
+ascoltare il più possibile.
+
+47
+00:03:14,030 --> 00:03:17,290
+I veicoli che si muovono su e giù
+per le strade, il chiacchiericcio.
+
+48
+00:03:17,290 --> 00:03:20,700
+Persino il rumore dell'equipaggiamento.
+
+49
+00:03:20,700 --> 00:03:24,860
+Con la prova del salto, ci assicuriamo
+di non far rumore mentre ci muoviamo.
+
+50
+00:03:24,860 --> 00:03:26,060
+Molti eserciti non lo fanno.
+
+51
+00:03:26,060 --> 00:03:29,190
+Comunque, abbiamo spinto verso l'alto e
+abbiamo preparato un'imboscata rapida.
+
+52
+00:03:29,190 --> 00:03:31,069
+Non avevamo molto tempo a disposizione.
+
+53
+00:03:31,069 --> 00:03:38,439
+Eravamo esposti da Houdan ma abbiamo
+preparato un'imboscata in questa zona.
+
+54
+00:03:38,439 --> 00:03:43,950
+Avevamo un po' di copertura e questa
+collina non gli avrebbe permesso di
+
+55
+00:03:43,950 --> 00:03:46,689
+scappare prima che noi potessimo sparare.
+
+56
+00:03:46,689 --> 00:03:51,040
+Una volta sistemati, proseguiamo e
+ci spostiamo verso Houdan per aiutare
+
+57
+00:03:51,040 --> 00:03:55,569
+il corpo principale dell'operazione
+che spingeva in quella direzione.
+
+58
+00:03:55,569 --> 00:03:59,969
+Abbiamo iniziato ad usare il combattimento
+ravvicinato, ma il meno possibile.
+
+59
+00:03:59,969 --> 00:04:03,310
+La forza principale stava arrivando
+e non li avevamo ancora incontrati.
+
+60
+00:04:03,310 --> 00:04:09,200
+Quindi, ricordatevi che è
+fondamentale colpire aggressivamente
+
+61
+00:04:09,200 --> 00:04:10,609
+e poi andarsene subito.
+
+62
+00:04:10,609 --> 00:04:15,800
+Il combattimento inizia e finisce quando
+decidete voi. Fine.
+
+63
+00:04:23,000 --> 00:04:27,050
+Bene, ora procederemo con la FIBUA,
+il combattimento in ambiente urbano.
+
+64
+00:04:27,050 --> 00:04:29,940
+Nella missione abbiamo scelto
+il ruolo di un fante regolare.
+
+65
+00:04:29,940 --> 00:04:36,160
+Quindi ripercorrerò quel che
+ho fatto e lavoreremo su quello.
+
+66
+00:04:36,160 --> 00:04:42,600
+Ricordate le 6 P: Preparazione Preventiva
+Previene Prestazioni Pessime e Penose.
+
+67
+00:04:42,600 --> 00:04:47,030
+Ogni operazione richiede molta
+pianificazione, dando il massimo sforzo,
+
+68
+00:04:47,030 --> 00:04:51,040
+e poi un duro addestramento
+per combattere più facilmente.
+
+69
+00:04:51,040 --> 00:04:55,070
+Vi mostrerò il percorso che ho
+intrapreso e vedremo cosa succederà.
+
+70
+00:04:55,070 --> 00:04:57,600
+La mia squadra ha cominciato da qui.
+
+71
+00:04:57,600 --> 00:04:59,100
+Eravamo in cima a una collina.
+
+72
+00:04:59,100 --> 00:05:00,670
+Riuscivamo a vedere qualcosa.
+
+73
+00:05:00,670 --> 00:05:03,259
+Purtroppo da lì non c'era
+molto altro che potevamo fare
+
+74
+00:05:03,259 --> 00:05:05,600
+se non attraversare il campo aperto.
+
+75
+00:05:06,470 --> 00:05:12,170
+Cercavamo di rimanere fuori portata,
+abbiamo seguito questo percorso,
+
+76
+00:05:12,170 --> 00:05:16,800
+cercato di evitare quest'area edificata
+e infine controllato se avevamo feriti,
+
+77
+00:05:16,800 --> 00:05:18,300
+quante munizioni restavano
+
+78
+00:05:18,300 --> 00:05:21,690
+e spinto in avanti verso questa zona.
+
+79
+00:05:21,690 --> 00:05:23,500
+Il nostro obiettivo principale
+era la stazione di rifornimento.
+
+80
+00:05:23,500 --> 00:05:25,380
+Quindi, purtroppo, dovevamo spingere.
+
+81
+00:05:25,380 --> 00:05:29,160
+Non c'erano altre possibilità, se non
+quella di sparare in una zona urbana.
+
+82
+00:05:29,160 --> 00:05:32,220
+Comunque, abbiamo combattuto contro
+il nemico qui, creato confusione.
+
+83
+00:05:32,220 --> 00:05:33,930
+Abbiamo trovato una zona di trasporto.
+
+84
+00:05:33,930 --> 00:05:38,690
+C'erano molti furgoni e da lì abbiamo
+provato a usare il terreno il più possibile
+
+85
+00:05:38,690 --> 00:05:42,183
+senza esporci. Abbiamo colpito
+la stazione di rifornimento
+
+86
+00:05:42,183 --> 00:05:45,500
+grossomodo da direzione sud-ovest.
+
+87
+00:05:46,600 --> 00:05:48,770
+Una cosa da tenere a mente è che
+l'imprudenza uccide.
+
+88
+00:05:48,770 --> 00:05:53,330
+Occhio alle porte, alle finestre,
+ad ogni angolo possibile.
+
+89
+00:05:53,330 --> 00:05:55,610
+Sembra un cliché, ma bisogna avere occhi
+anche dietro la testa.
+
+90
+00:05:55,610 --> 00:05:56,890
+Assicuratevi di essere attivi.
+
+91
+00:05:57,900 --> 00:06:02,030
+Voglio dire, se qualcosa si può evitare,
+si evita, ma il nostro obiettivo
+
+92
+00:06:02,030 --> 00:06:03,400
+era quello e dovevamo portarlo a termine.
+
+93
+00:06:03,400 --> 00:06:04,600
+Grazie.
+
+94
+00:06:10,770 --> 00:06:13,511
+Quindi, tiriamo le somme
+con la conclusione
+
+95
+00:06:13,511 --> 00:06:16,700
+e i punti cruciali di OIBUA/FIBUA
+e della tattica per piccole squadre.
+
+96
+00:06:16,900 --> 00:06:18,788
+In sostanza, le cose da tenere a mente sono:
+
+97
+00:06:18,788 --> 00:06:21,570
+aggressione massima,
+collaborazione con la squadra,
+
+98
+00:06:21,570 --> 00:06:23,970
+l'imprudenza uccide, quindi
+copritevi a vicenda.
+
+99
+00:06:23,970 --> 00:06:29,330
+Quando utilizzate le granate, fate in modo
+che non ci siano civili nella zona, nella stanza
+
+100
+00:06:29,330 --> 00:06:30,390
+o nella zona edificata.
+
+101
+00:06:30,390 --> 00:06:33,480
+Con le piccole squadre siete voi a
+iniziare e porre fine al combattimento.
+
+102
+00:06:33,480 --> 00:06:37,120
+Li colpite duramente e poi andate
+subito via perché non potete
+
+103
+00:06:37,120 --> 00:06:38,540
+reggere un lungo combattimento.
+
+104
+00:06:38,540 --> 00:06:42,800
+Oltre a quello, tenendo a mente questi
+punti avrete un vantaggio e potrete
+
+105
+00:06:42,800 --> 00:06:44,940
+o dovreste riuscire a terminare
+queste missioni con successo.
+
+106
+00:06:44,940 --> 00:06:47,200
+Okay, grazie ragazzi,
+e grazie per la vostra disponibilità.
+
