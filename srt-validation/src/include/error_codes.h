@@ -3,7 +3,10 @@ SRT VALIDATOR VERSION 1.0
 Author: Andrea Luciano Damico
 Creation date: 03/01/2018
 
-Description: This file contains the class declaration. Definitions are found in Subtitle.cpp
+description: This header file contains the namespace ERR, which is where error codes exists.
+			 Error codes are implemented as structs with two members: id, a numeric error code, and 
+			 description, a constant string containing a brief description of the issue.
+			 Note that we use ERR::OK.id in place of EXIT_SUCCESS.
 
 Copyright 2018 Andrea Luciano Damico
 
@@ -22,36 +25,26 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FO
 DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
 OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-
 #pragma once
-#include <string>
-#include <vector>
-#include <fstream>
-#include <sstream>
 
-class Subtitle
-{
-public:
-	Subtitle();//Default constructor
-	Subtitle(std::ifstream &, unsigned int &);
+namespace err {
+	struct ok {
+		const int id = 0;
+		const std::string description = "The operation has been completed successfully.";
+	} ok;
 
-	~Subtitle();
-	int get_id();
-	void set_id(int _id);
-	std::string get_startTime();
-	void set_startTime(std::string);
-	std::string get_endTime();
-	void set_endTime(std::string);
-	//These two static variables are declared as public to allow them to be initialized
-	//directly in main()
-	static int maxLines;
-	static int maxChars;
-	////////////////////////////////////////////
-	friend std::ostream& operator<< (std::ostream&, const Subtitle&);
-private:
-	int id;
-	std::string startTime;
-	std::string endTime;
-	std::vector<std::string> lines;
+	struct file_not_exists {
+		const int id = 1;
+		const std::string description = "Unable to read file. Check if file exists, if you have enough privileges to read it, or make sure it's not opened in another application and try again.";
+	} file_not_exists;
 	
-};
+	struct unable_to_write {
+		const int id = 2;
+		const std::string description = "Unable to write to output file. Check if you have enough privileges to write to this location, make sure that the file isn't open in another application and try again.";
+	} unable_to_write;
+	
+	struct invalid_file {
+		const int id = 3;
+		const std::string description = "Error. Not a valid SRT file.";
+	} invalid_file;
+}

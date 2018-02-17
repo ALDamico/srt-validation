@@ -115,12 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Subtitle.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\include\Subtitle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="error_codes.h" />
-    <ClInclude Include="Subtitle.h" />
+    <ClInclude Include="src\include\error_codes.h" />
+    <ClInclude Include="src\include\Subtitle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
