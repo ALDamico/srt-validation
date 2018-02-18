@@ -24,6 +24,10 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+* @file Subtitle.cpp
+*/
+
 #include "Subtitle.h"
 
 Subtitle::Subtitle() {
@@ -35,7 +39,7 @@ Subtitle::Subtitle() {
 	lines.push_back("");
 }
 
-Subtitle::Subtitle(std::ifstream& file, unsigned int& _current_line) {
+Subtitle::Subtitle(std::ifstream& file, unsigned& _current_line) {
 	//The constructor as actually called by the program. It takes a reference to an input file stream and reads
 	//its content
 	std::string line;
@@ -60,32 +64,31 @@ Subtitle::Subtitle(std::ifstream& file, unsigned int& _current_line) {
 		missingTrailingNewLine = true;
 }
 
-
 Subtitle::~Subtitle() {
 }
 
-int Subtitle::get_id() {
+int Subtitle::getID() {
 	return id;
 }
 
-void Subtitle::set_id(int _id) {
-	id = _id;
+void Subtitle::setID(int id) {
+	this->id = id;
 }
 
-std::string Subtitle::get_startTime() {
+std::string Subtitle::getStartTime() {
 	return startTime;
 }
 
-void Subtitle::set_startTime(std::string _startTime) {
-	startTime = _startTime;
+void Subtitle::setStartTime(std::string startTime) {
+	this->startTime = startTime;
 }
 
-std::string Subtitle::get_endTime() {
+std::string Subtitle::getEndTime() {
 	return endTime;
 }
 
-void Subtitle::set_endTime(std::string _endTime) {
-	endTime = _endTime;
+void Subtitle::setEndTime(std::string endTime) {
+	this->endTime = endTime;
 }
 
 //Default values for the static variables.
@@ -96,22 +99,31 @@ std::ostream & operator<<(std::ostream& os, const Subtitle& sub) {
 	os << "ID: " << sub.id << std::endl
 		<< "Start time: " << sub.startTime << std::endl
 		<< "End time: " << sub.endTime;
-	for (int i = 0; i < sub.lines.capacity(); i++) {
+	for (unsigned i = 0; i < sub.lines.capacity(); i++) {
 		os << "Line " << i << ": " << sub.lines[i] << std::endl;
 	}
 	return os;
 }
 
-bool Subtitle::get_trailingNewLineState() {
+bool Subtitle::getTrailingNewLineState() {
 	return missingTrailingNewLine;
 }
 
-bool Subtitle::check_Tags() {
-	for (int line = 0; line < lines.capacity(); line++) {
-		for (int pos = 0; pos < lines[line].length(); pos++) {
+bool Subtitle::checkTags() {
+	for (unsigned line = 0; line < lines.capacity(); line++) {
+		for (unsigned pos = 0; pos < lines[line].length(); pos++) {
 			if (lines[line][pos] == '<') {
 
 			}
 		}
 	}
+	return true;
+}
+
+void Subtitle::setMaxChars(int maxChars) {
+	Subtitle::maxChars = maxChars;
+}
+
+void Subtitle::setMaxLines(int maxLines) {
+	Subtitle::maxLines = maxLines;
 }

@@ -23,6 +23,10 @@ DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
+/**
+@file main.cpp
+*/
+
 //Includes
 #include <iostream> //mostly used for error reporting
 #include <fstream> //required for input-output operations on files
@@ -33,19 +37,23 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "include/error_codes.h" //Error codes used by this program
 #include "include/Subtitle.h" //Class subtitle, with << operator overload for displaying 
 
-namespace chro = std::chrono;
-
+/*!
+* \brief Entry point for the main application.
+* This function starts by checking whether the application has been started without any parameters or if the very first parameter is -h. If one of those conditions is true, a usage message is printed and the application exits with a 0 exit code.
+* Otherwise, the arguments are parsed. No argument is positional. Each argument is treated sequentially as it it encountered while scanning the argument vector.
+* After that, the application will try to open the file. If successful, the checking proper will commence.
+*/
 int main(int argc, char *argv[]) {
 	{
 
 		std::string filename;
-		//Analyzes and parses the command line arguments passed to the application. Returns a string (the file to open).
+		//Analyzes and parses the command line arguments passed to the application.
 
 		//Determine if the first option is -h or the program has been launched without arguments and print the usage message. All other parameters are ignored.
 		if ((argc == 1) || (static_cast<std::string>(argv[1]) == "-h")) 
 		{
 			std::cout << "Usage:" << std::endl
-				<< "srtvalidate [-h] FILENAME [-p|-a] [-l #] [-c #]" << std::endl
+				<< "srt-validation [-h] FILENAME [-p|-a] [-l #] [-c #]" << std::endl
 				<< std::endl
 				<< "Arguments:" << std::endl << std::endl
 				<< "-h\thelp\nPrint this help message and exit. Must be the first argument passed to the program. All subsequent arguments are ignored." << std::endl << std::endl
@@ -61,30 +69,29 @@ int main(int argc, char *argv[]) {
 		for (int i = 1; i < argc; i++) 
 		{
 			std::string currentArg = argv[i];
-			if (currentArg == "-p") 
-			{
+			if (currentArg == "-p") {
 				//Add code relevant to performance mode
 			}
-			else if (currentArg == "-a") 
-			{
+			else if (currentArg == "-a") {
 				//Add code relevant to accurate mode. Maybe I just need to set a bool to true? Or maybe we can create a static int variable inside the Subtitle class?
 			}
-			else if (currentArg == "-l") 
-			{
+			else if (currentArg == "-l") {
 				//Creates a stringstream called convert from the next argument and converts it to an integer.
 				std::stringstream convert(argv[i + 1]);
-				convert >> Subtitle::maxLines;
+				int maxLines = 0;
+				convert >> maxLines;
+				Subtitle::setMaxLines(maxLines);
 				i++;
 			}
-			else if (currentArg == "-c") 
-			{
+			else if (currentArg == "-c") {
 				//Creates a stringstream called convert from the next argument and converts it to an integer.
 				std::stringstream convert(argv[i + 1]);
-				convert >> Subtitle::maxChars;
+				int maxChars = 0;
+				convert >> maxChars;
+				Subtitle::setMaxChars(maxChars);
 				i++;
 			}
-			else 
-			{
+			else {
 				//The loop has found the file name to use and assigns it to the variable we defined earlier, so that we can return it when the function ends.
 				filename = currentArg;
 			}
@@ -92,24 +99,23 @@ int main(int argc, char *argv[]) {
 		std::ifstream inputFile;
 		inputFile.open(filename);
 		std::vector<Subtitle> subs;
-		if (inputFile.good()) 
-		{
+		if (inputFile.good()) {
 			//Checks whether the file exists
 			unsigned parsedLine = 0, subtitles = 0;
-			chro::system_clock::time_point startingTime = chro::system_clock::now();
+			std::chrono::system_clock::time_point startingTime = std::chrono::system_clock::now();
 			while (!inputFile.eof()) {
 				subs.push_back(Subtitle(inputFile, parsedLine));
 				subtitles++;
 				parsedLine++;
 			}
-			chro::system_clock::time_point endTime = chro::system_clock::now();
-			chro::milliseconds timeTaken = chro::duration_cast<chro::milliseconds>(endTime - startingTime);
+			std::chrono::system_clock::time_point endTime = std::chrono::system_clock::now();
+			std::chrono::milliseconds timeTaken = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startingTime);
 			std::cout << "Done parsing " << parsedLine + 1 << " lines in " << timeTaken.count() << " ms." << std::endl << "Found " << subtitles << " subtitles.";
 			std::cout << "Would you like to output all subtitles to the console? (y/n) ";
 			char choice;
 			std::cin >> choice;
 			if (choice == 'y') {
-				for (int i = 0; i < subtitles - 1; i++) {
+				for (unsigned i = 0; i < subtitles - 1; i++) {
 					std::cout << subs[i];
 				}
 			}
