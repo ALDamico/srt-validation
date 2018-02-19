@@ -6,7 +6,6 @@ Ciao, il mio nome è Ash.
 00:00:10,880 --> 00:00:13,750
 Sono un consulente militare
 per Bohemia Interactive.
-
 3
 00:00:13,750 --> 00:00:16,880
 Sono stato caposquadra
