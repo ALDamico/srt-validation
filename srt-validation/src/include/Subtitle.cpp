@@ -54,12 +54,17 @@ Subtitle::Subtitle() {
 *@param param A vector of strings used to construct the object.
 */
 Subtitle::Subtitle(std::vector<std::string> param) {
-	std::stringstream convert(param[0]);
-	convert >> this->id;
-	convert.str("");
-	convert.str(param[1]);
-	for (unsigned i = 2; i < param.capacity(); i++) {
-		this->lines.push_back(param[i]);
+	if (param.capacity() > 2) {
+		std::stringstream convert(param[0]);
+		convert >> this->id;
+		convert.str("");
+		convert.str(param[1]);
+		for (unsigned i = 2; i < param.capacity(); i++) {
+			this->lines.push_back(param[i]);
+		}
+	}
+	else {
+		Subtitle();
 	}
 }
 
