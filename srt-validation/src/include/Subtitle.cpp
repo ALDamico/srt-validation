@@ -26,78 +26,120 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 /**
 * @file Subtitle.cpp
+*
 */
 
 #include "Subtitle.h"
 
+///
+/// @brief Default constructor.
+///
+/// Initializes the subtitle object with invalid (null) values.
+///
+/// This constructor is actually never called in the program, so it mostly amounts to boilerplate code.
+///
 Subtitle::Subtitle() {
-	//Initializes the subtitle object with invalid (null) values.
-	//This constructor is actually never called in the program, so it mostly amounts to boilerplate code.
+	
 	id = 0;
-	startTime = "";
-	endTime = "";
+	startTime = Time(0, 0, 0);
+	endTime = Time(0, 0, 0);
 	lines.push_back("");
 }
 
-Subtitle::Subtitle(std::ifstream& file, unsigned& _current_line) {
-	//The constructor as actually called by the program. It takes a reference to an input file stream and reads
-	//its content
-	std::string line;
-	getline(file, line);
-	_current_line++;
-	std::stringstream convert(line);
-	convert >> id;
-	convert.clear();
-	/*
-		TODO: IMPLEMENT CONVERSION FROM THE LINE TO START TIME AND END TIME
-	*/
-	int isNewIDReached = id;
-	do {
-		getline(file, line);
-		_current_line++;
-		lines.push_back(line);
-		convert << line;
-		convert >> isNewIDReached;
-		convert.str("");
-	} while (line != "" && isNewIDReached > id);
-	if (isNewIDReached > id)
-		missingTrailingNewLine = true;
+/*!
+*@brief A constructor that takes a vector of strings as its argument and populates the subtitle accordingly.
+*
+*This constructor assigns the first element of the vector to the ID, the second is processed into two elements of type Time and the rest is assigned to a vector of strings.
+*
+*@param param A vector of strings used to construct the object.
+*/
+Subtitle::Subtitle(std::vector<std::string> param) {
+	std::stringstream convert(param[0]);
+	convert >> this->id;
+	convert.str("");
+	convert.str(param[1]);
+	for (unsigned i = 2; i < param.capacity(); i++) {
+		this->lines.push_back(param[i]);
+	}
 }
 
+///
+///@brief Default destructor. Currently empty-bodied.
+///
 Subtitle::~Subtitle() {
 }
 
+///
+///Gets the id of the current subtitle.
+///@return The id of the current subtitle.
+///
 int Subtitle::getID() {
 	return id;
 }
 
+///
+///Sets the id of the current subtitle.
+///@param id The id to assign to the subtitle.
+///@return Void.
+///
 void Subtitle::setID(int id) {
 	this->id = id;
 }
 
-std::string Subtitle::getStartTime() {
+///
+///Gets the starting time of the current subtitle.
+///@return The starting time of the current subtitle.
+///
+Time Subtitle::getStartTime() {
 	return startTime;
 }
 
-void Subtitle::setStartTime(std::string startTime) {
+///
+///Sets the starting time of the current subtitle.
+///@param startTime The starting time to assign to the subtitle.
+///@return Void.
+///
+void Subtitle::setStartTime(Time startTime) {
 	this->startTime = startTime;
 }
 
-std::string Subtitle::getEndTime() {
+///
+///Gets the ending time of the current subtitle.
+///@return A string with the ending time of the current subtitle.
+///
+Time Subtitle::getEndTime() {
 	return endTime;
 }
 
-void Subtitle::setEndTime(std::string endTime) {
+///
+///Sets the ending time of the current subtitle.
+///@param endTime The ending time we assign to the subtitle.
+///@return Void.
+///
+void Subtitle::setEndTime(Time endTime) {
 	this->endTime = endTime;
 }
 
-//Default values for the static variables.
+///
+///@brief The maximum number of lines per subtitle. This number *also includes* the empty line used to mark the end of a subtitle in an SRT file.
+///
 int Subtitle::maxLines = 3;
+///
+///@brief The maximum number of characters per line.
+///
 int Subtitle::maxChars = 42;
 
-std::ostream & operator<<(std::ostream& os, const Subtitle& sub) {
+///
+///@brief Overloading of << for class Subtitle.
+///
+///Allows using << with an output stream as to make easier outputting the content of a subtitle to the console.
+///@param os An ostream passed as reference.
+///@param sub A Subtitle passed as constant reference, so that the function can't inadvertently modify it.
+///@return A reference to an ostream.
+///
+std::ostream& operator<<(std::ostream& os, const Subtitle& sub) {
 	os << "ID: " << sub.id << std::endl
-		<< "Start time: " << sub.startTime << std::endl
+		//<< "Start time: "; << sub.startTime << std::endl
 		<< "End time: " << sub.endTime;
 	for (unsigned i = 0; i < sub.lines.capacity(); i++) {
 		os << "Line " << i << ": " << sub.lines[i] << std::endl;
@@ -105,6 +147,7 @@ std::ostream & operator<<(std::ostream& os, const Subtitle& sub) {
 	return os;
 }
 
+///@brief 
 bool Subtitle::getTrailingNewLineState() {
 	return missingTrailingNewLine;
 }

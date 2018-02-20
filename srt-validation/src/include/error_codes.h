@@ -27,10 +27,13 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 */
 #pragma once
 
+///
 /// \file error_codes.h
 /// \brief The header file where error codes (and descriptions) for srt-validation are defined.
 /// This header file lists a series of structs inside the namespace err.
+///
 
+///
 /// \namespace err
 /// \brief Namespace err contains a bunch of structs used to represent error codes and brief descriptions thereof.
 ///

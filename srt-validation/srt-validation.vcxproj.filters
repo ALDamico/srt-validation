@@ -18,6 +18,9 @@
     <ClCompile Include="src\main.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="src\include\Time.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
     <ClCompile Include="src\include\Subtitle.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
@@ -27,6 +30,9 @@
       <Filter>File di intestazione</Filter>
     </ClInclude>
     <ClInclude Include="src\include\error_codes.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
+    <ClInclude Include="src\include\Time.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
   </ItemGroup>

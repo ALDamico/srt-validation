@@ -78,15 +78,48 @@ $(function() {
 <code>#include &lt;sstream&gt;</code><br />
 <code>#include &lt;chrono&gt;</code><br />
 <code>#include &quot;<a class="el" href="error__codes_8h_source.html">include/error_codes.h</a>&quot;</code><br />
-<code>#include &quot;include/Subtitle.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_subtitle_8h_source.html">include/Subtitle.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top"><a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
-<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point for the main application. This function starts by checking whether the application has been started without any parameters or if the very first parameter is -h. If one of those conditions is true, a usage message is printed and the application exits with a 0 exit code. Otherwise, the arguments are parsed. No argument is positional. Each argument is treated sequentially as it it encountered while scanning the argument vector. After that, the application will try to open the file. If successful, the checking proper will commence. <br /></td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="memdesc:a0ddf1224851353fc92bfbff6f499fa97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point for the main application.  <a href="#a0ddf1224851353fc92bfbff6f499fa97">More...</a><br /></td></tr>
 <tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&nbsp;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Entry point for the main application. </p>
+<p>This function starts by checking whether the application has been started without any parameters or if the very first parameter is -h. If one of those conditions is true, a usage message is printed and the application exits with a 0 exit code.</p>
+<p>Otherwise, the arguments are parsed. No argument is positional. Each argument is treated sequentially as it it encountered while scanning the argument vector.</p>
+<p>After that, the application will try to open the file. If successful, the checking proper will commence. </p>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

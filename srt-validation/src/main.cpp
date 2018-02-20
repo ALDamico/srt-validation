@@ -36,11 +36,41 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <chrono>
 #include "include/error_codes.h" //Error codes used by this program
 #include "include/Subtitle.h" //Class subtitle, with << operator overload for displaying 
+#include "include/Time.h"
+
+/*!
+*@brief Extracts an element of type Time from a stringstream
+*
+* This function takes a stringstream as its argument and returns an object of type Time. It does so by taking 
+* extracting the first two characters from starting position (pos), skips the character where the ":" would be and 
+* repeats the same with seconds and milliseconds. Note that this function *does not* check whether the stringstream has
+* a suitable structure. The programmer is in charge of making sure she's passing the correct type of stringstream.
+*
+*@param in The input stringstream.
+*@param pos The starting position of the extraction process.
+*@return An object of type Time
+*/
+Time sstreamToTime(std::stringstream in, unsigned pos) {
+	std::stringstream minutes, seconds, milliseconds;
+	minutes << in.str().substr(pos, 2);
+	pos += 3;
+	seconds << in.str().substr(pos, 2);
+	pos += 3;
+	milliseconds << in.str().substr(pos, 3);
+	int minutesInt, secondsInt, millisecondsInt;
+	minutes >> minutesInt;
+	seconds >> secondsInt;
+	milliseconds >> millisecondsInt;
+	return Time(minutesInt, secondsInt, millisecondsInt);
+}
 
 /*!
 * \brief Entry point for the main application.
+*
 * This function starts by checking whether the application has been started without any parameters or if the very first parameter is -h. If one of those conditions is true, a usage message is printed and the application exits with a 0 exit code.
+*
 * Otherwise, the arguments are parsed. No argument is positional. Each argument is treated sequentially as it it encountered while scanning the argument vector.
+*
 * After that, the application will try to open the file. If successful, the checking proper will commence.
 */
 int main(int argc, char *argv[]) {
@@ -50,7 +80,7 @@ int main(int argc, char *argv[]) {
 		//Analyzes and parses the command line arguments passed to the application.
 
 		//Determine if the first option is -h or the program has been launched without arguments and print the usage message. All other parameters are ignored.
-		if ((argc == 1) || (static_cast<std::string>(argv[1]) == "-h")) 
+		if ((argc == 1) || (static_cast<std::string>(argv[1]) == "-h"))
 		{
 			std::cout << "Usage:" << std::endl
 				<< "srt-validation [-h] FILENAME [-p|-a] [-l #] [-c #]" << std::endl
@@ -66,7 +96,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		//Scan the entire array of C strings and sets various things.
-		for (int i = 1; i < argc; i++) 
+		for (int i = 1; i < argc; i++)
 		{
 			std::string currentArg = argv[i];
 			if (currentArg == "-p") {
@@ -99,7 +129,7 @@ int main(int argc, char *argv[]) {
 		std::ifstream inputFile;
 		inputFile.open(filename);
 		std::vector<Subtitle> subs;
-		if (inputFile.good()) {
+		/*if (inputFile.good()) {
 			//Checks whether the file exists
 			unsigned parsedLine = 0, subtitles = 0;
 			std::chrono::system_clock::time_point startingTime = std::chrono::system_clock::now();
@@ -120,7 +150,7 @@ int main(int argc, char *argv[]) {
 				}
 			}
 		}
-		else 
+		else
 		{
 			std::cout << err::file_not_exists.description;
 			return err::file_not_exists.id;
@@ -129,5 +159,6 @@ int main(int argc, char *argv[]) {
 		inputFile.close();
 		std::cout << err::ok.description;
 		return err::ok.id;
+	}*/
 	}
 }

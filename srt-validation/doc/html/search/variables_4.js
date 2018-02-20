@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unable_5fto_5fwrite',['unable_to_write',['../namespaceerr.html#a68ce6385637e2684c975214a14c3d0aa',1,'err']]]
+  ['ok',['ok',['../namespaceerr.html#abc46346338bf68951a8a18a74d8dd191',1,'err']]]
 ];

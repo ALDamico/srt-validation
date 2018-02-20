@@ -24,6 +24,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 */
 
 ///
+///@file Subtitle.h
 /// \brief Declaration file for type Subtitle.
 ///
 /// This file contains the declarations for the Subtitle class, which acts as the representation of each individual subtitle inside the program's logic
@@ -34,32 +35,23 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <vector>//Used to allocate a dynamic vector of type Subtitle
 #include <fstream>//Used to read from the input file and optionally to output a report.
 #include <sstream>//Used to convert strings to integers. @see Subtitle
+#include "Time.h"
 
 class Subtitle
 {
 public:
-	///Default constructor that inizializes every field in the instance with zeroes or empty strings.
+	/*Constructors and destructors*/
 	Subtitle();
-	///Constructor as used in the main.cpp file. It takes a reference to ifstream and an unsigned long representing the current line and populates the correct field.
-	Subtitle(std::ifstream &, unsigned int &);/**<@param	ifstream&	file	The input file as read from the main function, passed as reference.
-											  *<@param	unsigned&	_current_line	The current line read by the main function, passed as reference.*/
-	///Default destructor. Currently empty-bodied.
+	Subtitle(std::vector<std::string>);
 	~Subtitle();
 
 	/*Public methods*/
-	///Gets the id of the current subtitle.
-	int getID();///\return The id of the current subtitle.
-	///Sets the id of the current subtitle.
-	void setID(int);///<@param _id The id to be assigned to the current subtitle.
-	///Gets the starting time of the current subtitle.
-	std::string getStartTime();
-	///Sets the starting time of the current subtitle.
-	void setStartTime(std::string);///<@param 
-	///Gets the ending time of the current subtitle.
-	std::string getEndTime();
-	///Sets the ending time of the current subtitle.
-	void setEndTime(std::string);
-	///Checks if there are any unmatched tags in the current subtitle.
+	int getID();
+	void setID(int);
+	Time getStartTime();
+	void setStartTime(Time);
+	Time getEndTime();
+	void setEndTime(Time);
 	bool checkTags();
 	bool getTrailingNewLineState();
 	static void setMaxLines(int);
@@ -69,8 +61,8 @@ public:
 	friend std::ostream& operator<< (std::ostream&, const Subtitle&);
 private:
 	int id;
-	std::string startTime;
-	std::string endTime;
+	Time startTime;
+	Time endTime;
 	std::vector<std::string> lines;
 	//A boolean used to keep track of whether this object and the next are separated by an empty line.
 	//It's only set by the constructor, but we provide a member function to get its value.
