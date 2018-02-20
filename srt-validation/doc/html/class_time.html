@@ -64,6 +64,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="class_time-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Time Class Reference</div>  </div>
@@ -86,9 +87,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4b16abfa210874dad22bd0e82ac048a5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a4b16abfa210874dad22bd0e82ac048a5">operator&gt;</a> (<a class="el" href="class_time.html">Time</a> &amp;)</td></tr>
 <tr class="memdesc:a4b16abfa210874dad22bd0e82ac048a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloading of operator &gt; for comparisons.  <a href="#a4b16abfa210874dad22bd0e82ac048a5">More...</a><br /></td></tr>
 <tr class="separator:a4b16abfa210874dad22bd0e82ac048a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bbe9c1a89eef195dadc0a3f2f599c62"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a4bbe9c1a89eef195dadc0a3f2f599c62">operator&lt;&lt;</a> (std::ostream &amp;)</td></tr>
-<tr class="memdesc:a4bbe9c1a89eef195dadc0a3f2f599c62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloading of operator &lt;&lt; for ostream.  <a href="#a4bbe9c1a89eef195dadc0a3f2f599c62">More...</a><br /></td></tr>
-<tr class="separator:a4bbe9c1a89eef195dadc0a3f2f599c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -104,6 +102,12 @@ std::chrono::seconds&#160;</td><td class="memItemRight" valign="bottom"><a class
 std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a86dac976924149167b337305c2ed0efb">milliseconds</a></td></tr>
 <tr class="memdesc:a86dac976924149167b337305c2ed0efb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of milliseconds. <br /></td></tr>
 <tr class="separator:a86dac976924149167b337305c2ed0efb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a8295bca3f4381cb3ed59d37c933df962"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_time.html#a8295bca3f4381cb3ed59d37c933df962">operator&lt;&lt;</a> (std::ostream &amp;, const <a class="el" href="class_time.html">Time</a> &amp;)</td></tr>
+<tr class="memdesc:a8295bca3f4381cb3ed59d37c933df962"><td class="mdescLeft">&#160;</td><td class="mdescRight">Overloading of operator &lt;&lt; for ostream.  <a href="#a8295bca3f4381cb3ed59d37c933df962">More...</a><br /></td></tr>
+<tr class="separator:a8295bca3f4381cb3ed59d37c933df962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A class used to represent time codes in a subtitle. </p>
@@ -174,32 +178,6 @@ std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4bbe9c1a89eef195dadc0a3f2f599c62"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4bbe9c1a89eef195dadc0a3f2f599c62">&#9670;&nbsp;</a></span>operator&lt;&lt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::ostream &amp; Time::operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname"><em>os</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Overloading of operator &lt;&lt; for ostream. </p>
-<p>This member function allows us to use our <a class="el" href="class_time.html" title="A class used to represent time codes in a subtitle. ">Time</a> class with ostreams. It prints the number of minutes, seconds and milliseconds separated by their respective a ":" and a ".", respectively. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">os</td><td>A reference to an ostream. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a4b16abfa210874dad22bd0e82ac048a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4b16abfa210874dad22bd0e82ac048a5">&#9670;&nbsp;</a></span>operator&gt;()</h2>
 
@@ -220,6 +198,51 @@ std::chrono::milliseconds&#160;</td><td class="memItemRight" valign="bottom"><a 
 <p>The operator &gt; can be used to compare two of these times. This is useful when checking for overlapping subtitles. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tm</td><td>The right-hand operand. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a id="a8295bca3f4381cb3ed59d37c933df962"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8295bca3f4381cb3ed59d37c933df962">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>os</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="class_time.html">Time</a> &amp;&#160;</td>
+          <td class="paramname"><em>tm</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Overloading of operator &lt;&lt; for ostream. </p>
+<p>This member function allows us to use our <a class="el" href="class_time.html" title="A class used to represent time codes in a subtitle. ">Time</a> class with ostreams. It prints the number of minutes, seconds and milliseconds separated by their respective a ":" and a ".", respectively. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">os</td><td>A reference to an ostream. </td></tr>
   </table>
   </dd>
 </dl>
