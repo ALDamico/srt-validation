@@ -30,6 +30,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 * Inizializes the time as 00:00.000
 */
 Time::Time() {
+	this->hours = (std::chrono::hours) 0;
 	this->minutes = (std::chrono::minutes)0;
 	this->seconds = (std::chrono::seconds)0;
 	this->milliseconds = (std::chrono::milliseconds)0;
@@ -43,7 +44,8 @@ Time::Time() {
 * @param seconds Number of seconds.
 * @param milliseconds Number of milliseconds.
 */
-Time::Time(int minutes, int seconds, int milliseconds) {
+Time::Time(int hours, int minutes, int seconds, int milliseconds) {
+	this->hours = (std::chrono::hours) hours;
 	this->minutes = (std::chrono::minutes) minutes;
 	this->seconds = (std::chrono::seconds) seconds;
 	this->milliseconds = (std::chrono::milliseconds) milliseconds;
@@ -56,7 +58,10 @@ Time::Time(int minutes, int seconds, int milliseconds) {
 *@param tm The right-hand operand.
 */
 bool Time::operator>(Time& tm) {
-	if (this->minutes > tm.minutes) {
+	if (this->hours > tm.hours) {
+		return true;
+	} 
+	else if (this->minutes > tm.minutes) {
 		return true;
 	} 
 	else if (this->seconds > tm.seconds) {
@@ -75,5 +80,5 @@ bool Time::operator>(Time& tm) {
 @param os A reference to an ostream.
 */
 std::ostream& operator<<(std::ostream& os, const Time& tm)  {
-	return os << tm.minutes.count() << ":" << tm.seconds.count() << "." << tm.milliseconds.count();
+	return os << std::setw(2) << std::setfill('0') << tm.hours.count() << ":" << std::setw(2) << tm.minutes.count() << ":" << std::setw(2) << tm.seconds.count() << "." << std::setw(3) << tm.milliseconds.count();
 }

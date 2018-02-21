@@ -1,10 +1,12 @@
 1
 00:00:09,700 --> 00:00:10,880
-Ciao, il mio nome è Ash.
+Ciao, <b>il mio nome è Ash.</b>
+
 2
 00:00:10,880 --> 00:00:13,750
-Sono un consulente militare
-per Bohemia Interactive.
+Sono un <i>consulente militare
+per Bohemia Interactive</i>.
+
 3
 00:00:13,750 --> 00:00:16,880
 Sono stato caposquadra
@@ -495,4 +497,4 @@ queste missioni con successo.
 106
 00:06:44,940 --> 00:06:47,200
 Okay, grazie ragazzi,
-e grazie per la vostra disponibilità.
+e grazie per la <b>vostra disponibilità.

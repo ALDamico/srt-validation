@@ -25,6 +25,8 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #pragma once
 #include <chrono>
 #include <iostream>
+#include <iomanip>
+
 /**
 *@file Time.h
 *@class Time
@@ -37,10 +39,12 @@ class Time
 {
 public:
 	Time();
-	Time(int, int, int);
+	Time(int, int, int, int);
 	bool operator>(Time&);
 	friend std::ostream& operator<< (std::ostream&, const Time&);
 private:
+	///@brief Number of hours.
+	std::chrono::hours hours;
 	///@brief Number of minutes.
 	std::chrono::minutes minutes;
 	///@brief Number of seconds.

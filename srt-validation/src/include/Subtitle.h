@@ -27,7 +27,9 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 ///@file Subtitle.h
 /// \brief Declaration file for type Subtitle.
 ///
-/// This file contains the declarations for the Subtitle class, which acts as the representation of each individual subtitle inside the program's logic
+/// @author Andrea Luciano Damico
+///
+/// This file contains the declarations for the Subtitle class, which acts as the representation of each individual subtitle inside the program's logic.
 ///
 
 #pragma once
@@ -35,6 +37,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include <vector>//Used to allocate a dynamic vector of type Subtitle
 #include <fstream>//Used to read from the input file and optionally to output a report.
 #include <sstream>//Used to convert strings to integers. @see Subtitle
+#include <regex>
 #include "Time.h"
 
 class Subtitle
@@ -54,10 +57,15 @@ public:
 	void setEndTime(Time);
 	bool checkTags();
 	bool getTrailingNewLineState();
+	void setTrailingNewLineState(bool);
+	bool checkLineLength();
+	bool checkLineNumber();
+	bool checkTrailingNewLine();
 	static void setMaxLines(int);
 	static void setMaxChars(int);
 	static int getMaxLines();
 	static int getMaxChars();
+
 	friend std::ostream& operator<< (std::ostream&, const Subtitle&);
 private:
 	int id;

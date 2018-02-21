@@ -38,34 +38,6 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "include/Subtitle.h" //Class subtitle, with << operator overload for displaying 
 #include "include/Time.h"
 
-const int START_TIME_INITIAL_POS = 0, END_TIME_INITIAL_POS = 17;
-
-/*!
-*@brief Extracts an element of type Time from a stringstream
-*
-* This function takes a stringstream as its argument and returns an object of type Time. It does so by taking
-* extracting the first two characters from starting position (pos), skips the character where the ":" would be and
-* repeats the same with seconds and milliseconds. Note that this function *does not* check whether the stringstream has
-* a suitable structure. The programmer is in charge of making sure she's passing the correct type of stringstream.
-*
-*@param in The input stringstream.
-*@param pos The starting position of the extraction process.
-*@return An object of type Time
-*/
-Time sstreamToTime(std::stringstream in, unsigned pos) {
-	std::stringstream minutes, seconds, milliseconds;
-	minutes << in.str().substr(pos, 2);
-	pos += 3;
-	seconds << in.str().substr(pos, 2);
-	pos += 3;
-	milliseconds << in.str().substr(pos, 3);
-	int minutesInt, secondsInt, millisecondsInt;
-	minutes >> minutesInt;
-	seconds >> secondsInt;
-	milliseconds >> millisecondsInt;
-	return Time(minutesInt, secondsInt, millisecondsInt);
-}
-
 /*!
 * \brief Entry point for the main application.
 *
@@ -133,54 +105,29 @@ int main(int argc, char *argv[]) {
 		std::vector<Subtitle> subs;
 		std::chrono::system_clock::time_point readBegin = std::chrono::system_clock::now();
 		unsigned parsedLine = 0, subtitles = 0;
+		bool dirtyBit = false;
 		std::vector<std::string>currentBatch;
 		if (inputFile.good()) {
 			//Variable where the current line is stored
 			std::string currentLine;
 			//Main read loop
 			while (!inputFile.eof()) {
+				subtitles++;
 				//This loops fetches lines in the input file until it reaches an empty line
 				do {
 					getline(inputFile, currentLine);
 					currentBatch.push_back(currentLine);
 					parsedLine++;
-					if (std::to_string(subtitles + 1) == currentLine)
-						continue;
 				}
 				while (currentLine != "");
 				//We pass the vector we just created to a ctor.
 				subs.push_back(Subtitle(currentBatch));
-				subtitles++;
+				if (dirtyBit == true) {
+					subs[subtitles].setTrailingNewLineState(true);
+					dirtyBit = false;
+				}
 				//Clear the currentBatch so that the loop can start anew.
 				currentBatch.clear();
-			}
-		}
-		std::chrono::system_clock::time_point readEnd = std::chrono::system_clock::now();
-		std::chrono::milliseconds timeTaken = std::chrono::duration_cast<std::chrono::milliseconds>(readEnd - readBegin);
-		std::cout << "Done parsing " << parsedLine << " lines in " << timeTaken.count() << " ms." << std::endl
-			<< "Found " << subtitles + 1 << " subtitles." << std::endl;
-		getchar();
-		std::cout << err::ok.description;
-		return err::ok.id;
-		/*if (inputFile.good()) {
-			//Checks whether the file exists
-			unsigned parsedLine = 0, subtitles = 0;
-			std::chrono::system_clock::time_point startingTime = std::chrono::system_clock::now();
-			while (!inputFile.eof()) {
-				subs.push_back(Subtitle(inputFile, parsedLine));
-				subtitles++;
-				parsedLine++;
-			}
-			std::chrono::system_clock::time_point endTime = std::chrono::system_clock::now();
-			std::chrono::milliseconds timeTaken = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startingTime);
-			std::cout << "Done parsing " << parsedLine + 1 << " lines in " << timeTaken.count() << " ms." << std::endl << "Found " << subtitles << " subtitles.";
-			std::cout << "Would you like to output all subtitles to the console? (y/n) ";
-			char choice;
-			std::cin >> choice;
-			if (choice == 'y') {
-				for (unsigned i = 0; i < subtitles - 1; i++) {
-					std::cout << subs[i];
-				}
 			}
 		}
 		else
@@ -188,10 +135,17 @@ int main(int argc, char *argv[]) {
 			std::cout << err::file_not_exists.description;
 			return err::file_not_exists.id;
 		}
-
 		inputFile.close();
+		std::chrono::system_clock::time_point readEnd = std::chrono::system_clock::now();
+		std::chrono::milliseconds timeTaken = std::chrono::duration_cast<std::chrono::milliseconds>(readEnd - readBegin);
+		std::cout << "Done parsing " << parsedLine << " lines in " << timeTaken.count() << " ms." << std::endl
+			<< "Found " << subtitles + 1 << " subtitles." << std::endl;
+		for (unsigned i = 0; i < subtitles; i++) {
+			subs[i].checkTags();
+			subs[i].checkLineLength();
+		}
+		getchar();
 		std::cout << err::ok.description;
 		return err::ok.id;
-	}*/
 	}
 }
