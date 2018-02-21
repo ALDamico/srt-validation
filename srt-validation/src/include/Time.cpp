@@ -27,7 +27,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 /**
 * @brief Time default constructor
 *
-* Inizializes the time as 00:00.000
+* Inizializes the time as 00:00:00.000
 */
 Time::Time() {
 	this->hours = (std::chrono::hours) 0;
@@ -39,7 +39,8 @@ Time::Time() {
 /**
 *@brief Time normal constructor
 *
-* Inizializes the time with three integer values
+* Inizializes the time with four integer values.
+* @param hours Number of hours.
 * @param minutes Number of minutes.
 * @param seconds Number of seconds.
 * @param milliseconds Number of milliseconds.
@@ -76,8 +77,11 @@ bool Time::operator>(Time& tm) {
 /**
 *@brief Overloading of operator << for ostream
 *
-*This member function allows us to use our Time class with ostreams. It prints the number of minutes, seconds and milliseconds separated by their respective a ":" and a ".", respectively.
-@param os A reference to an ostream.
+* This member function allows us to use our Time class with ostreams. It prints the number of hours, minutes, seconds 
+* and milliseconds separated by their respective a ":" and a ".".
+* We use setfill to improve the presentation of the output by prepending a '0' if the number has less than two (three,
+* in the case of milliseconds) digits.
+* @param os A reference to an ostream.
 */
 std::ostream& operator<<(std::ostream& os, const Time& tm)  {
 	return os << std::setw(2) << std::setfill('0') << tm.hours.count() << ":" << std::setw(2) << tm.minutes.count() << ":" << std::setw(2) << tm.seconds.count() << "." << std::setw(3) << tm.milliseconds.count();

@@ -26,25 +26,23 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 /**
 * @file Subtitle.cpp
-*
+* @author Andrea Luciano Damico
 */
 
 #include "Subtitle.h"
 
-
 /*!
-*@brief Extracts an element of type Time from a stringstream
+*@brief Extracts an element of type Time from a stringstream.
 *
-* This function takes a stringstream as its argument and returns an object of type Time. It does so by taking
+* This *external* function takes a string as its argument and returns an object of type Time. It does so by taking
 * extracting the first two characters from starting position (pos), skips the character where the ":" would be and
 * repeats the same with seconds and milliseconds. Note that this function *does not* check whether the stringstream has
 * a suitable structure. The programmer is in charge of making sure she's passing the correct type of stringstream.
 *
-*@param in The input stringstream.
-*@param pos The starting position of the extraction process.
+*@param in The input string.
+*@param pos The starting position of the extraction process. In the application, we pass it two constants, START_TIME_INITIAL_POS and END_TIME_INITIAL_POS.
 *@return An object of type Time
 */
-
 Time stringToTime(std::string in, unsigned pos) {
 	std::stringstream inStream(in);
 	std::stringstream hours, minutes, seconds, milliseconds;
@@ -165,6 +163,7 @@ void Subtitle::setEndTime(Time endTime) {
 ///@brief The maximum number of lines per subtitle. This number *also includes* the empty line used to mark the end of a subtitle in an SRT file.
 ///
 int Subtitle::maxLines = 3;
+
 ///
 ///@brief The maximum number of characters per line.
 ///
@@ -188,18 +187,40 @@ std::ostream& operator<<(std::ostream& os, const Subtitle& sub) {
 	return os;
 }
 
-///@brief 
+/*!
+* @brief Check whether this Subtitle is properly ended (with an empty string as its last line) or not.
+*
+* @return A boolean that indicates if the last element of lines[] is an empty string or not.
+*/
 bool Subtitle::getTrailingNewLineState() {
 	return missingTrailingNewLine;
 }
-
-void Subtitle::setTrailingNewLineState(bool state)
+/*!
+* @brief Sets the appropriate missingTrailNewLine value based on the last element in lines[].
+*
+* @see getTraililngNewLineState()
+* @see missingTrailingNewLine
+*/
+void Subtitle::setTrailingNewLineState()
 {
-	this->missingTrailingNewLine = state;
+	if (lines[lines.capacity() - 1] == "")
+		missingTrailingNewLine = true;
+	else
+		missingTrailingNewLine = false;
 }
 
+/*!
+* @brief Checks the length of *all* lines inside this object and returns a bool that indicates if they *all* are below the recommended length.
+*
+* @b *IMPORTANT*: Right now, checkLineLength() does *NOT* support tags (they're not ignored but treated as if they're real characters).
+*
+* @return True if all lengths < maxChars, False otherwise.
+*/
 bool Subtitle::checkLineLength()
 {
+	/*!
+	* If cleanBit is clean, the length doesn't exceed Subtitle::maxChars.
+	*/
 	bool cleanBit = true;
 	for (unsigned i = 0; i < lines.capacity() - 1; i++) {
 		if (lines[i].length() > Subtitle::maxChars) {
@@ -223,6 +244,7 @@ bool Subtitle::checkLineNumber()
 		return true;
 	return false;
 }
+
 /*!
 * @brief Checks for mismatches in the tags.
 *
@@ -232,6 +254,8 @@ bool Subtitle::checkLineNumber()
 * - <i> @e italic tag;
 * - <u> underlined tag;
 * - <font> font color;
+*
+* @return True if all tags are properly matched, false otherwise.
 */
 bool Subtitle::checkTags() {
 	const std::regex BOLD_TAG_OPEN("(.*)<b>(.*)");
@@ -288,12 +312,23 @@ bool Subtitle::checkTags() {
 	return cleanBit;
 }
 
-void Subtitle::setMaxChars(int maxChars) {
+/*!
+* @brief Sets the value of maxChars.
+*
+* @param maxChars The (unsigned) value to assign to the maxChars static variable.
+*/
+void Subtitle::setMaxChars(unsigned maxChars) {
 	Subtitle::maxChars = maxChars;
 }
 
-int Subtitle::getMaxLines()
-{
+/*!
+* @brief Gets the value of maxLines.
+*
+* maxLines should account for an extra empty line to mark the end of the subtitle, otherwise missingTrailingNewLine is set to true and an error is logged.
+*
+* @return The maximum number of allowed lines in a subtitle (default: 3).
+*/
+int Subtitle::getMaxLines() {
 	return Subtitle::maxLines;
 }
 
@@ -302,7 +337,12 @@ int Subtitle::getMaxChars()
 	return Subtitle::maxChars;
 }
 
-void Subtitle::setMaxLines(int maxLines) {
+/*!
+* @brief Sets the value of maxLines.
+*
+* maxLines should account for an extra empty line to mark the end of the subtitle, otherwise missingTrailingNewLine is set to true and an error is logged.
+*/
+void Subtitle::setMaxLines(unsigned maxLines) {
 	Subtitle::maxLines = maxLines;
 }
 

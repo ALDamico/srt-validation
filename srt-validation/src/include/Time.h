@@ -33,7 +33,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 *@brief A class used to represent time codes in a subtitle.
 *
 * Time.h allows to represent time codes in a subtitle as minutes, seconds and milliseconds.
-* It contains three std::chrono::time_point private members and two operator overloadings.
+* It contains four std::chrono::time_point private members and two operator overloadings.
 */
 class Time
 {

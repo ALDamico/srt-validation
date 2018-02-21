@@ -57,12 +57,12 @@ public:
 	void setEndTime(Time);
 	bool checkTags();
 	bool getTrailingNewLineState();
-	void setTrailingNewLineState(bool);
+	void setTrailingNewLineState();
 	bool checkLineLength();
 	bool checkLineNumber();
 	bool checkTrailingNewLine();
-	static void setMaxLines(int);
-	static void setMaxChars(int);
+	static void setMaxLines(unsigned);
+	static void setMaxChars(unsigned);
 	static int getMaxLines();
 	static int getMaxChars();
 
