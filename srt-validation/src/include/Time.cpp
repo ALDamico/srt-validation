@@ -87,6 +87,13 @@ std::ostream& operator<<(std::ostream& os, const Time& tm)  {
 	return os << std::setw(2) << std::setfill('0') << tm.hours.count() << ":" << std::setw(2) << tm.minutes.count() << ":" << std::setw(2) << tm.seconds.count() << "." << std::setw(3) << tm.milliseconds.count();
 }
 
+/*!
+*@brief Overloading of operator == to check for equality between two times.
+*
+*Works similarly to the operator overloading for >.
+*
+*@return A boolean indicating whether two times are equal or not.
+*/
 bool Time::operator==(Time&tm) {
 	if (this->hours == tm.hours) {
 		if (this->minutes == tm.minutes) {

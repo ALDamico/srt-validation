@@ -25,6 +25,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 
 ///
 ///@file Subtitle.h
+///@class Subtitle
 /// \brief Declaration file for type Subtitle.
 ///
 /// @author Andrea Luciano Damico
@@ -46,7 +47,6 @@ public:
 	/*Constructors and destructors*/
 	Subtitle();
 	Subtitle(std::vector<std::string>);
-	~Subtitle();
 
 	/*Public methods*/
 	int getID();
@@ -60,20 +60,18 @@ public:
 	void setTrailingNewLineState();
 	bool checkLineLength(std::ostream&);
 	bool checkLineNumber();
-	bool checkTrailingNewLine();
 	static void setMaxLines(unsigned);
 	static void setMaxChars(unsigned);
 	static int getMaxLines();
 	static int getMaxChars();
 
 	friend std::ostream& operator<< (std::ostream&, const Subtitle&);
+
 private:
 	int id;
 	Time startTime;
 	Time endTime;
 	std::vector<std::string> lines;
-	//A boolean used to keep track of whether this object and the next are separated by an empty line.
-	//It's only set by the constructor, but we provide a member function to get its value.
 	bool missingTrailingNewLine = false;
 	static int maxLines;
 	static int maxChars;

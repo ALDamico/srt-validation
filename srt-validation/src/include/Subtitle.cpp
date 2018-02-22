@@ -61,8 +61,11 @@ Time stringToTime(std::string in, unsigned pos) {
 	return Time(hoursInt, minutesInt, secondsInt, millisecondsInt);
 }
 
-///@brief Two constants used to determine the starting position in lines containing start and end times.
-const int START_TIME_INITIAL_POS = 0, END_TIME_INITIAL_POS = 17;
+///@brief The initial position of the string we use to extract the starting time from.
+const int START_TIME_INITIAL_POS = 0;
+
+///@brief The initial position of the string we use to extract the ending time from.
+const int END_TIME_INITIAL_POS = 17;
 
 ///
 /// @brief Default constructor.
@@ -100,12 +103,6 @@ Subtitle::Subtitle(std::vector<std::string> param) {
 	else {
 		Subtitle();
 	}
-}
-
-///
-///@brief Default destructor. Currently empty-bodied.
-///
-Subtitle::~Subtitle() {
 }
 
 ///
@@ -238,6 +235,12 @@ bool Subtitle::checkLineLength(std::ostream& os)
 	}
 	return true;
 }
+
+/*!
+* @brief Checks if the number of lines is below the maximum number allowed.
+*
+*@return A boolean indicating whether the limit set by maxLines has been exceeded or not.
+*/
 bool Subtitle::checkLineNumber()
 {
 	if (lines.capacity() <= Subtitle::maxLines)
@@ -331,6 +334,12 @@ void Subtitle::setMaxChars(unsigned maxChars) {
 int Subtitle::getMaxLines() {
 	return Subtitle::maxLines;
 }
+
+/*!
+*@brief Gets the number of max characters allowed in each line.
+*
+*@return An integer.
+*/
 
 int Subtitle::getMaxChars()
 {
