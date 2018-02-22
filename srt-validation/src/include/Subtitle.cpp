@@ -216,7 +216,7 @@ void Subtitle::setTrailingNewLineState()
 *
 * @return True if all lengths < maxChars, False otherwise.
 */
-bool Subtitle::checkLineLength()
+bool Subtitle::checkLineLength(std::ostream& os)
 {
 	/*!
 	* If cleanBit is clean, the length doesn't exceed Subtitle::maxChars.
@@ -225,12 +225,12 @@ bool Subtitle::checkLineLength()
 	for (unsigned i = 0; i < lines.capacity() - 1; i++) {
 		if (lines[i].length() > Subtitle::maxChars) {
 			cleanBit = false;
-			std::cout << "Line " << i << " in subtitle n. " << this->id << " is too long: " << lines[i].length() << " characters, should be " << Subtitle::maxChars << "." << std::endl
+			os << "Line " << i << " in subtitle n. " << this->id << " is too long: " << lines[i].length() << " characters, should be " << Subtitle::maxChars << "." << std::endl
 				<< lines[i] << std::endl;
 			for (int i = 0; i < Subtitle::maxChars; i++) {
-				std::cout << " ";
+				os << " ";
 			}
-			std::cout << "^" << std::endl;
+			os << "^" << std::endl;
 		}
 	}
 	if (!cleanBit) {
@@ -257,7 +257,7 @@ bool Subtitle::checkLineNumber()
 *
 * @return True if all tags are properly matched, false otherwise.
 */
-bool Subtitle::checkTags() {
+bool Subtitle::checkTags(std::ostream& os) {
 	const std::regex BOLD_TAG_OPEN("(.*)<b>(.*)");
 	const std::regex BOLD_TAG_CLOSED("(.*)</b>(.*)");
 	const std::regex ITALIC_TAG_OPEN("(.*)<i>(.*)");
@@ -295,19 +295,19 @@ bool Subtitle::checkTags() {
 		}
 	}
 	if (boldTagClosedCount - boldTagOpenCount != 0) {
-		std::cout << "Bold tag mismatch in subtitle " << this->id << std::endl;
+		os << "Bold tag mismatch in subtitle " << this->id << std::endl;
 		cleanBit = false;
 	}
 	if (italicTagClosedCount - italicTagOpenCount != 0) {
-		std::cout << "Italic tag mismatch in subtitle " << this->id << std::endl;
+		os << "Italic tag mismatch in subtitle " << this->id << std::endl;
 		cleanBit = false;
 	}
 	if (underlinedTagClosedCount - underlinedTagOpenCount) {
-		std::cout << "Underlined tag mismatch in subtitle " << this->id << std::endl;
+		os << "Underlined tag mismatch in subtitle " << this->id << std::endl;
 		cleanBit = false;
 	}
 	if (!cleanBit) {
-		std::cout << *this << std::endl;
+		os << *this << std::endl;
 	}
 	return cleanBit;
 }

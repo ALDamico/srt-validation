@@ -62,13 +62,13 @@ bool Time::operator>(Time& tm) {
 	if (this->hours > tm.hours) {
 		return true;
 	} 
-	else if (this->minutes > tm.minutes) {
+	if (this->hours == tm.hours && this->minutes > tm.minutes) {
 		return true;
 	} 
-	else if (this->seconds > tm.seconds) {
+	if (this->minutes== tm.minutes && this->seconds > tm.seconds) {
 		return true;
 	}
-	else if (this->milliseconds > tm.milliseconds) {
+	if (this->seconds == tm.seconds && this->milliseconds > tm.milliseconds) {
 		return true;
 	}
 	return false;
@@ -85,4 +85,17 @@ bool Time::operator>(Time& tm) {
 */
 std::ostream& operator<<(std::ostream& os, const Time& tm)  {
 	return os << std::setw(2) << std::setfill('0') << tm.hours.count() << ":" << std::setw(2) << tm.minutes.count() << ":" << std::setw(2) << tm.seconds.count() << "." << std::setw(3) << tm.milliseconds.count();
+}
+
+bool Time::operator==(Time&tm) {
+	if (this->hours == tm.hours) {
+		if (this->minutes == tm.minutes) {
+			if (this->seconds == tm.seconds) {
+				if (this->milliseconds == tm.milliseconds) {
+					return true;
+				}
+			}
+		}
+	}
+	return false;
 }

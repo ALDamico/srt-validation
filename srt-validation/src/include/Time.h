@@ -41,6 +41,7 @@ public:
 	Time();
 	Time(int, int, int, int);
 	bool operator>(Time&);
+	bool operator==(Time&);
 	friend std::ostream& operator<< (std::ostream&, const Time&);
 private:
 	///@brief Number of hours.

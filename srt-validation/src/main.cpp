@@ -38,6 +38,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 #include "include/error_codes.h" //Error codes used by this program
 #include "include/Subtitle.h" //Class subtitle, with << operator overload for displaying 
 #include "include/Time.h"
+#include <algorithm>
 
 /*!
 * \brief Entry point for the main application.
@@ -51,7 +52,7 @@ OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWA
 int main(int argc, char *argv[]) {
 	{
 
-		std::string filename;
+		std::string filename, outputFilename;
 		//Analyzes and parses the command line arguments passed to the application.
 
 		//Determine if the first option is -h or the program has been launched without arguments and print the usage message. All other parameters are ignored.
@@ -66,7 +67,8 @@ int main(int argc, char *argv[]) {
 				<< "-p\tperformance\nRun the analysis in performance mode. Each subtitle will be checked against the following one. This argument is incompatible with -a." << std::endl << std::endl
 				<< "-a\taccurate\nRun the analysis in accurate mode. Each subtitle will be checked against ALL following subtitles. This argument is incompatible with -p." << std::endl << std::endl
 				<< "-l #\tline length\nSet how many lines are allowed per subtitle. Default is 2." << std::endl << std::endl
-				<< "-c #\tcharacters per line\nSet how many characters are allowed per subtitle. Default is 42.";
+				<< "-c #\tcharacters per line\nSet how many characters are allowed per subtitle. Default is 42." << std::endl << std::endl
+				<< "-o FILENAME\nThe name of the output file. If set, the program will output its analysis to a file instead of the console";
 			exit(err::ok.id);
 		}
 
@@ -94,6 +96,10 @@ int main(int argc, char *argv[]) {
 				int maxChars = 0;
 				convert >> maxChars;
 				Subtitle::setMaxChars(maxChars);
+				i++;
+			}
+			else if (currentArg == "-o") {
+				outputFilename = argv[i + 1];
 				i++;
 			}
 			else {
@@ -124,7 +130,7 @@ int main(int argc, char *argv[]) {
 				//We pass the vector we just created to a ctor.
 				subs.push_back(Subtitle(currentBatch));
 				if (dirtyBit == true) {
-					subs[subtitles].setTrailingNewLineState(true);
+					subs[subtitles].setTrailingNewLineState();
 					dirtyBit = false;
 				}
 				//Clear the currentBatch so that the loop can start anew.
@@ -141,9 +147,69 @@ int main(int argc, char *argv[]) {
 		std::chrono::milliseconds timeTaken = std::chrono::duration_cast<std::chrono::milliseconds>(readEnd - readBegin);
 		std::cout << "Done parsing " << parsedLine << " lines in " << timeTaken.count() << " ms." << std::endl
 			<< "Found " << subtitles + 1 << " subtitles." << std::endl;
-		for (unsigned i = 0; i < subtitles; i++) {
-			subs[i].checkTags();
-			subs[i].checkLineLength();
+		//Check if the output file name has been provided
+		if (outputFilename == "") {
+			std::cout << std::endl << "Checking tags..." << std::endl << std::endl;
+			for (unsigned i = 0; i < subtitles; i++) {
+				subs[i].checkTags(std::cout);
+			}
+			std::cout << std::endl << "Checking line lengths..." << std::endl << std::endl;
+			for (unsigned i = 0; i < subtitles; i++) {
+				subs[i].checkLineLength(std::cout);
+			}
+			std::cout << std::endl << "Checking times..." << std::endl << std::endl;
+			for (unsigned i = 0; i < subtitles; i++) {
+				Time time1 = subs[i].getEndTime(), time2 = subs[i + 1].getStartTime(), time3 = subs[i].getStartTime();
+				if (time1 > time2) {
+					std::cout << "Time mismatch between subtitle " << i << " and " << i + 1 << ".\n"
+						<< subs[i] << std::endl << std::endl << subs[i + 1] << std::endl << std::endl;
+				}
+				else if (Time(0, 0, 0, 0) == time1 || Time(0, 0, 0, 0) == time3) {
+					std::cout << "Time in subtitle " << i << " not set." << std::endl << std::endl << subs[i];
+				}
+			}
+			std::cout << std::endl << "Checking trailing empty lines..." << std::endl << std::endl;
+			for (unsigned i = 0; i < subtitles; i++) {
+				if (subs[i].getTrailingNewLineState()) {
+					std::cout << "Missing trailing new line in subtitle " << i << std::endl;
+				}
+			}
+		}
+		//If it has...
+		else {
+			std::ofstream outFile;
+			outFile.open(outputFilename);
+			if (outFile.good()) {
+				outFile << std::endl << "Checking tags..." << std::endl << std::endl;
+				for (unsigned i = 0; i < subtitles; i++) {
+					subs[i].checkTags(outFile);
+				}
+				outFile << std::endl << "Checking line lengths..." << std::endl << std::endl;
+				for (unsigned i = 0; i < subtitles; i++) {
+					subs[i].checkLineLength(outFile);
+				}
+				outFile << std::endl << "Checking times..." << std::endl << std::endl;
+				for (unsigned i = 0; i < subtitles; i++) {
+					Time time1 = subs[i].getEndTime(), time2 = subs[i + 1].getStartTime(), time3 = subs[i].getStartTime();
+					if (time1 > time2) {
+						outFile << "Time mismatch between subtitle " << i << " and " << i + 1 << ".\n"
+							<< subs[i] << std::endl << std::endl << subs[i + 1] << std::endl << std::endl;
+					}
+					else if (Time(0, 0, 0, 0) == time1 || Time(0, 0, 0, 0) == time3) {
+						outFile << "Time in subtitle " << i << " not set." << std::endl << std::endl << subs[i];
+					}
+				}
+				outFile << std::endl << "Checking trailing empty lines..." << std::endl << std::endl;
+				for (unsigned i = 0; i < subtitles; i++) {
+					if (subs[i].getTrailingNewLineState()) {
+						outFile << "Missing trailing new line in subtitle " << i << std::endl;
+					}
+				}
+			}
+			else {
+				std::cout << err::unable_to_write.description;
+				return err::unable_to_write.id;
+			}
 		}
 		getchar();
 		std::cout << err::ok.description;

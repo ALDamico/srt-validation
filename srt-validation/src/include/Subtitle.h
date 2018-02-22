@@ -55,10 +55,10 @@ public:
 	void setStartTime(Time);
 	Time getEndTime();
 	void setEndTime(Time);
-	bool checkTags();
+	bool checkTags(std::ostream&);
 	bool getTrailingNewLineState();
 	void setTrailingNewLineState();
-	bool checkLineLength();
+	bool checkLineLength(std::ostream&);
 	bool checkLineNumber();
 	bool checkTrailingNewLine();
 	static void setMaxLines(unsigned);
