@@ -24,5 +24,3 @@ srt-validation supports the following command-line arguments:
   Sets the <b>maximum number of characters per line</b>. If a line length exceeds this threshold, an error message is printed to the console.
 4. -t <i>character per line tolerance</i></br>
   Specifies how much extra characters per line the application will tolerate.
-  
-Note that at the time of this writing not all command-line options are supported.
